@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bean.Ville;
@@ -42,27 +43,16 @@ public class VilleController {
 		return villes;
 	}
 	
-//	// fonction pour enregistrer un element dans la BDD
-//	@RequestMapping(value="/enregistrer", method=RequestMethod.POST)
-//	public void postVille(@RequestParam(required = true, value="codePostal") String codePostal, @RequestParam(required = true, value="nomCommune") String nomCommune) {
-//		System.out.println("post");
-//		
-//		VilleDao villeDao = new VilleDao();
-//		villeDao.ajouterVille(codePostal, nomCommune);
-//	}
+
 	
 	// fonction pour enregistrer un element dans la BDD
-		@PostMapping(value="/ville")
-		public ResponseEntity<Ville> postVille(@RequestBody Ville nouvVille) {
+		@PostMapping(value="/villes")
+		public String postVille(@RequestBody Ville ville) {
 			System.out.println("post");
-			
-			try {
-				
-			}
-			Ville ville = new Ville(codeINSEE, codePostal, nomCommune)
 			
 			VilleDao villeDao = new VilleDao();
 			villeDao.ajouterVille(ville);
+			return("ville ajoutée");
 		}
 
 }

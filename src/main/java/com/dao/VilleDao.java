@@ -31,7 +31,16 @@ public ArrayList<Ville> recupererVilles() {
         // R�cup�ration des donn�es
         while (resultat.next()) {
            
-        	Ville ville = new Ville(resultat.getString(1), resultat.getString(2), resultat.getString(3),resultat.getString(4),resultat.getString(5),resultat.getString(6),resultat.getString(7));
+        	Ville ville = new Ville();
+			//Ville ville = new Ville(resultat.getString(1), resultat.getString(2), resultat.getString(3),resultat.getString(4),resultat.getString(5),resultat.getString(6),resultat.getString(7));
+        	ville.setCodeINSEE(resultat.getString(1));
+        	ville.setCodePostal(resultat.getString(2));
+        	ville.setNomCommune(resultat.getString(3));
+        	ville.setLibelleAcheminement(resultat.getString(4));
+        	ville.setLigne5(resultat.getString(5));
+        	ville.setLatitude(resultat.getString(6));
+        	ville.setLongitude(resultat.getString(7));
+        	
         	listVille.add(ville);
         }
     } catch (SQLException e) {
@@ -69,7 +78,16 @@ public ArrayList<Ville> recupererVilles() {
             // R�cup�ration des donn�es
             while (resultat.next()) {
                
-            	Ville ville =  new Ville(resultat.getString(1), resultat.getString(2), resultat.getString(3),resultat.getString(4),resultat.getString(5),resultat.getString(6),resultat.getString(7));
+            	Ville ville = new Ville();
+    			//Ville ville = new Ville(resultat.getString(1), resultat.getString(2), resultat.getString(3),resultat.getString(4),resultat.getString(5),resultat.getString(6),resultat.getString(7));
+            	ville.setCodeINSEE(resultat.getString(1));
+            	ville.setCodePostal(resultat.getString(2));
+            	ville.setNomCommune(resultat.getString(3));
+            	ville.setLibelleAcheminement(resultat.getString(4));
+            	ville.setLigne5(resultat.getString(5));
+            	ville.setLatitude(resultat.getString(6));
+            	ville.setLongitude(resultat.getString(7));
+            	
             	listVille.add(ville);
             }
         } catch (SQLException e) {

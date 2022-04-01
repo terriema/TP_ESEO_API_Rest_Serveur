@@ -9,7 +9,7 @@ public class Ville {
 	private String latitude;
 	private String longitude;
 	
-	public Ville(String codeINSEE,String codePostal,String nomCommune) {
+	/*public Ville(String codeINSEE,String codePostal,String nomCommune) {
 		this.codeINSEE=codeINSEE;
 		this.codePostal=codePostal;
 		this.nomCommune=nomCommune;
@@ -23,7 +23,7 @@ public class Ville {
 		this.ligne5=ligne5;
 		this.latitude=latitude;
 		this.longitude=longitude;
-	}
+	}*/
 
 	public String getCodeINSEE() {
 		return codeINSEE;
