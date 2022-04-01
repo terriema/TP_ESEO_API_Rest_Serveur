@@ -117,10 +117,87 @@ public ArrayList<Ville> recupererVilles() {
         	connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/twicmaven", "root", "");
         	
             // Ex�cution de la requ�te
-            PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO ville_france VALUES(?,?,?,'','','','');");
+            PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO ville_france VALUES(?,?,?,?,?,?,?);");
             preparedStatement.setString(1, ville.getCodeINSEE());
             preparedStatement.setString(2, ville.getCodePostal());
             preparedStatement.setString(3, ville.getNomCommune());
+            preparedStatement.setString(4, ville.getLibelleAcheminement());
+            preparedStatement.setString(5, ville.getLigne5());
+            preparedStatement.setString(6, ville.getLatitude());
+            preparedStatement.setString(7, ville.getLongitude());
+            
+            preparedStatement.executeUpdate();
+            
+        } catch (SQLException e) {
+        	 e.printStackTrace();
+        } finally {
+            // Fermeture de la connexion
+            try {
+                if (resultat != null)
+                    resultat.close();
+                if (connexion != null)
+                    connexion.close();
+            } catch (SQLException e) {
+            	 e.printStackTrace();
+            }
+        }
+        
+    }
+    
+    public void supprimerVilles(String codePostal) {
+        ResultSet resultat = null;
+
+        loadDatabase();
+        
+        try {
+        	
+        	connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/twicmaven", "root", "");
+        	
+            // Ex�cution de la requ�te
+            PreparedStatement preparedStatement = connexion.prepareStatement("DELETE FROM ville_france WHERE Code_postal = ?;");
+            preparedStatement.setString(1, codePostal);
+            
+            
+            preparedStatement.executeUpdate();
+            
+        } catch (SQLException e) {
+        	 e.printStackTrace();
+        } finally {
+            // Fermeture de la connexion
+            try {
+                if (resultat != null)
+                    resultat.close();
+                if (connexion != null)
+                    connexion.close();
+            } catch (SQLException e) {
+            	 e.printStackTrace();
+            }
+        }
+        
+    }
+    
+    
+    public void modifierVilles(Ville ville, String codeINSEE) {
+        ResultSet resultat = null;
+
+        loadDatabase();
+        
+        try {
+        	
+        	connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/twicmaven", "root", "");
+        	
+            // Ex�cution de la requ�te
+        	PreparedStatement preparedStatement = connexion.prepareStatement("UPDATE ville_france SET Code_commune_INSEE = ?, Nom_commune = ?, Code_postal = ?, Libelle_acheminement = ?, Ligne_5 = ?, Latitude = ?, Longitude = ? WHERE Code_commune_INSEE = ?;");
+            preparedStatement.setString(1, ville.getCodeINSEE());
+            preparedStatement.setString(2, ville.getCodePostal());
+            preparedStatement.setString(3, ville.getNomCommune());
+            preparedStatement.setString(4, ville.getLibelleAcheminement());
+            preparedStatement.setString(5, ville.getLigne5());
+            preparedStatement.setString(6, ville.getLatitude());
+            preparedStatement.setString(7, ville.getLongitude());
+            preparedStatement.setString(8, codeINSEE);
+            
+            System.out.print(preparedStatement.toString());
             
             preparedStatement.executeUpdate();
             
