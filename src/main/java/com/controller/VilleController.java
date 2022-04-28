@@ -35,12 +35,12 @@ public class VilleController {
 		
 		
 	// fonction pour récupérer le contenu de la BDD
-	@GetMapping(value="/ville/{codePostal}")
-	public ArrayList<Ville> getVilleParCodePostal(@PathVariable String codePostal) {
+	@GetMapping(value="/ville/{codeINSEE}")
+	public ArrayList<Ville> getVilleParCodePostal(@PathVariable String codeINSEE) {
 		System.out.println("get");
 		
 		VilleDao villeDao = new VilleDao();
-		ArrayList<Ville> villes = villeDao.recupererVillesParCodePostal(codePostal);
+		ArrayList<Ville> villes = villeDao.recupererVillesParCodeINSEE(codeINSEE);
 
 		return villes;
 	}
@@ -58,12 +58,12 @@ public class VilleController {
 	
 		
 	// fonction pour supprimer un element de la BDD
-	@DeleteMapping(value="/villes/{codePostal}")
-	public String deleteVille(@PathVariable String codePostal) {
+	@DeleteMapping(value="/villes/{codeINSEE}")
+	public String deleteVille(@PathVariable String codeINSEE) {
 		System.out.println("delete");
 			
 		VilleDao villeDao = new VilleDao();
-		villeDao.supprimerVilles(codePostal);
+		villeDao.supprimerVilles(codeINSEE);
 		return("ville supprimée");
 	}	
 	
